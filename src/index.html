@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raposo Emporio App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+
+        <div id="login-view" class="view">
+            <h1>Bem vindo ao nosso site</h1>
+            <h3>Por favor, faça login ou cadastre-se</h3>
+            <form id="login-form">
+                <label for="login-username">Nome de Usuário:</label>
+                <input
+                    type="text"
+                    id="login-username"
+                    placeholder="Nome de usuário"
+                    required>
+                <label for="login-password">Senha</label>
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Senha"
+                    required>
+                <button type="submit">Login</button>
+                <p>Novo aqui? <a href="#" id="switch-to-signup">Cadastre-se</a></p>
+            </form>
+        </div>
+
+        <div id="signup-view" class="view hidden">
+            <h1>Cadastro</h1>
+            <form id="signup-form">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Nome de Usuário:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            minlength="8"
+                            placeholder="P@ssw0rd"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first_name">Primeiro Nome:</label>
+                        <input
+                            type="text"
+                            id="first_name"
+                            name="first_name"
+                            required
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Insira seu nome"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Sobrenome:</label>
+                        <input
+                            type="text"
+                            id="last_name"
+                            name="last_name"
+                            required
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Insira seu sobrenome"
+                        />
+                    </div>
+                </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birth_date">Data de Nascimento:</label>
+                        <input
+                        type="date"
+                        id="birth_date"
+                        name="birth_date"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="Insira seu e-mail"
+                    />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="document">Nº de documento:</label>
+                    <input
+                        type="text"
+                        id="document"
+                        name="document"
+                        required
+                        minlength="11"
+                        maxlength="14"
+                        placeholder="Insira o número do seu documento"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Celular:</label>
+                    <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    required minlength="10"
+                    maxlength="15"
+                    placeholder="Insira seu número de celular"/>
+                </div>
+            </div>
+
+            <div class="form-row reduced-">
+                <div class="form-group">
+                    <label for="country">País:</label>
+                    <input
+                        type="text"
+                        id="country"
+                        name="country"
+                        required
+                        minlength="3"
+                        maxlength="50"
+                        placeholder="Insira o nome de seu país"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="city">Cidade:</label>
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        minlength="3"
+                        maxlength="50"
+                        placeholder="Insira o nome da sua cidade"
+                     />
+                </div>
+                <div class="form-group state" >
+                    <label for="state">Estado:</label>
+                    <input
+                        type="text"
+                        id="state"
+                        name="state"
+                        minlength="2"
+                        maxlength="2"
+                        placeholder="Insira a Sigla"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Tipo:</label>
+                <select id="role" name="role" required>
+                    <option value="USER">User</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+
+                <div class="form-group">
+                    <button type="submit">Cadastrar</button>
+                </div>
+                <p>Já é cliente? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+        </div>
+
+        <div id="user-list-view" class="view hidden">
+            <h1>Users</h1>
+            <button id="logout">Logout</button>
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="update-user-view" class="view hidden">
+            <h1>Atualizar Usuário</h1>
+            <form id="update-user-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="update-username">Nome de Usuário:</label>
+                        <input
+                            type="text"
+                            id="update-username"
+                            name="username"
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="update-password">Senha:</label>
+                        <input
+                            type="password"
+                            id="update-password"
+                            name="password"
+                            minlength="8"
+                            placeholder="Repita sua senha ou insira uma nova"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="update-first_name">Primeiro Nome:</label>
+                        <input
+                            type="text"
+                            id="update-first_name"
+                            name="first_name"
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Insira seu nome"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="update-last_name">Sobrenome:</label>
+                        <input
+                            type="text"
+                            id="update-last_name"
+                            name="last_name"
+                            minlength="3"
+                            maxlength="50"
+                            placeholder="Insira seu sobrenome"
+                        />
+                    </div>
+                </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="update-birth_date">Data de Nascimento:</label>
+                        <input
+                        type="date"
+                        id="update-birth_date"
+                        name="birth_date"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="update-email">E-mail:</label>
+                    <input
+                        type="email"
+                        id="update-email"
+                        name="email"
+                        placeholder="Insira seu e-mail"
+                    />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="update-document">Nº de documento:</label>
+                    <input
+                        type="text"
+                        id="update-document"
+                        name="document"
+                        minlength="11"
+                        maxlength="14"
+                        placeholder="Insira o número do seu documento"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="update-phone">Celular:</label>
+                    <input
+                    type="text"
+                    id="update-phone"
+                    name="phone"
+                    minlength="10"
+                    maxlength="15"
+                    placeholder="Insira seu número de celular"/>
+                </div>
+            </div>
+
+            <div class="form-row reduced-">
+                <div class="form-group">
+                    <label for="update-country">País:</label>
+                    <input
+                        type="text"
+                        id="update-country"
+                        name="country"
+                        minlength="3"
+                        maxlength="50"
+                        placeholder="Insira o nome de seu país"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="update-city">Cidade:</label>
+                    <input
+                        type="text"
+                        id="update-city"
+                        name="city"
+                        minlength="3"
+                        maxlength="50"
+                        placeholder="Insira o nome da sua cidade"
+                     />
+                </div>
+                <div class="form-group state" >
+                    <label for="update-state">Estado:</label>
+                    <input
+                        type="text"
+                        id="update-state"
+                        name="state"
+                        minlength="2"
+                        maxlength="2"
+                        placeholder="Insira a Sigla"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="update-role">Tipo:</label>
+                <select id="update-role" name="role" required>
+                    <option value="USER">User</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+
+                <div class="form-group">
+                    <button type="submit" class="save-button">Salvar Alterações</button>
+                    <button type="button" id="cancel-update" class="cancel-button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
