@@ -39,8 +39,14 @@ const app = {
         this.userListView.classList.add('hidden');
         this.updateUserView.classList.add('hidden');
 
-        if (view === 'login') this.loginView.classList.remove('hidden');
-        if (view === 'signup') this.signupView.classList.remove('hidden');
+        if (view === 'login') {
+            this.loginForm.reset();
+            this.loginView.classList.remove('hidden');
+        }
+        if (view === 'signup') {
+            this.signupForm.reset();
+            this.signupView.classList.remove('hidden');
+        }
         if (view === 'user-list') this.userListView.classList.remove('hidden');
         if (view === 'update-user') this.updateUserView.classList.remove('hidden');
     },
@@ -59,7 +65,7 @@ const app = {
             const data = await res.json();
             if (res.ok) {
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('role', data.role);
+                localStorage.setItem('user-id', data.id);
                 this.loadUsers();
                 this.showView('user-list');
             } else {
@@ -185,7 +191,6 @@ const app = {
         const state = document.getElementById('update-state').value;
         const role = document.getElementById('update-role').value;
 
-
         try {
             const res = await fetch(`${BACKEND_URL}/user/${userId}`, {
                 method: 'PUT',
@@ -221,21 +226,28 @@ const app = {
 
     async deleteUser(userId) {
         try {
-
             const res = await fetch(`${BACKEND_URL}/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             });
+            const get_user_requester = await fetch(`${BACKEND_URL}/user/${localStorage.getItem('user-id')}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
             if (res.ok) {
                 alert('Usuário excluído com sucesso!');
-                if (localStorage.getItem('role') !== 'ADMIN') {
+                if (!get_user_requester.ok){
                     this.logout();
                     return;
                 }
                 this.loadUsers();
             } else {
+                if (!get_user_requester.ok){
+                    this.logout();
+                }
                 const data = await res.json();
                 alert(data.error);
             }
@@ -258,7 +270,7 @@ const app = {
     },
 
     logout() {
-        localStorage.removeItem('token');
+        localStorage.clear();
         this.showView('login');
     },
 };
