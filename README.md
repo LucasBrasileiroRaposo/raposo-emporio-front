@@ -10,6 +10,9 @@ Sistema CRUD para gerenciar usuários, para o sistema do Raposo Emporio. Funcion
 ## Regras de negócio
 Usuários podem se cadastrar por si só no sistema, nesse primeiro momento, o próprio pode escolher sua função, entre ADMIN e USER, e após o cadastro o usuário é levado a tela de login. Após a realização correta do login, passa para a tela principal onde se tem algumas informações de todos os usuários cadastrados no sistema, sendo que ADMINs podem ver todos eles, mas um USER pode ver apenas outros USERs. Outra regra do sistema, é que um usuário USER pode editar e excluir apenas o próprio perfil, não tendo se quer acesso a dados não mostrados na página principal, enquanto ADMINs conseguem ver os dados de outros users (mas não edita-los) e tem o poder de excluir o user. Depois de logado o usuário não precisa relogar na próxima hora, que é o período de duração do token, após a deleção do próprio usuário do sistema, o logout automático é realizado e volta-se para a página de login/registro.
 
+## Updates de features
+Agora é possível a partir do CEP introduzido pelo usuário, já pegar o endereço, estado e cidade do usuário sem q o mesmo precise digitar tudo a mão. Mas caso o usuário prefira, pode apenas deixar o campo de CEP em branco e preencher manualmente os outros campos.
+
 ## Front-End
 
 ### Tecnologias
@@ -23,7 +26,7 @@ Utilizei de estratégias de view e form que aparecia e desapareciam na tela do u
 ### Instruções para executar
 1. Clone o repositório:
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/LucasBrasileiroRaposo/raposo-emporio-front.git
 
 2. Execute o live server ou copie o path do arquivo ```index.html``` e cole em seu navegador
 
