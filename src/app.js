@@ -24,6 +24,16 @@ const app = {
         this.logoutButton.addEventListener('click', this.logout.bind(this));
         document.addEventListener('click', this.handleTableActions.bind(this));
 
+        const signupCepField = document.getElementById('cep');
+        const updateCepField = document.getElementById('update-cep');
+
+        if (signupCepField) {
+            signupCepField.addEventListener('blur', () => this.handleCepLookup('signup'));
+        }
+        if (updateCepField) {
+            updateCepField.addEventListener('blur', () => this.handleCepLookup('update'));
+        }
+
         const token = localStorage.getItem('token');
         if (token) {
             this.loadUsers();
@@ -86,7 +96,7 @@ const app = {
         const email = document.getElementById('email').value;
         const user_document = document.getElementById('document').value;
         const phone = document.getElementById('phone').value;
-        const country = document.getElementById('country').value;
+        const address = document.getElementById('address').value;
         const city = document.getElementById('city').value;
         const state = document.getElementById('state').value;
         const role = document.getElementById('role').value;
@@ -102,7 +112,7 @@ const app = {
                     birth_date,
                     document:user_document,
                     phone,
-                    country,
+                    address,
                     city,
                     state,
                     role
@@ -130,7 +140,7 @@ const app = {
                 <tr>
                     <td>${user.username}</td>
                     <td>${user.email}</td>
-                    <td>${user.country}</td>
+                    <td>${user.city}</td>
                     <td>${user.role}</td>
                     <td class="actions">
                         <button data-id="${user.id}" class="edit-btn">Editar</button>
@@ -159,7 +169,7 @@ const app = {
                 document.getElementById('update-email').value = user.email;
                 document.getElementById('update-document').value = user.document;
                 document.getElementById('update-phone').value = user.phone;
-                document.getElementById('update-country').value = user.country;
+                document.getElementById('update-address').value = user.address;
                 document.getElementById('update-city').value = user.city;
                 document.getElementById('update-state').value = user.state;
                 document.getElementById('update-role').value = user.role;
@@ -186,7 +196,7 @@ const app = {
         const email = document.getElementById('update-email').value;
         const user_document = document.getElementById('update-document').value;
         const phone = document.getElementById('update-phone').value;
-        const country = document.getElementById('update-country').value;
+        const address = document.getElementById('update-address').value;
         const city = document.getElementById('update-city').value;
         const state = document.getElementById('update-state').value;
         const role = document.getElementById('update-role').value;
@@ -206,7 +216,7 @@ const app = {
                     email,
                     user_document,
                     phone,
-                    country,
+                    address,
                     city,
                     state,
                     role }),
@@ -272,6 +282,33 @@ const app = {
     logout() {
         localStorage.clear();
         this.showView('login');
+    },
+
+    async handleCepLookup(context) {
+        let cepField, prefix;
+        if (context === 'signup') {
+            cepField = document.getElementById('cep');
+            prefix = '';
+        } else if (context === 'update') {
+            cepField = document.getElementById('update-cep');
+            prefix = 'update-';
+        }
+        if (!cepField) return;
+
+        const cep = cepField.value.replace(/\D/g, '');
+        if (cep.length !== 8) return;
+
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const data = await response.json();
+            if (data.erro) throw new Error('CEP inválido');
+
+            document.getElementById(`${prefix}address`).value = data.logradouro || '';
+            document.getElementById(`${prefix}city`).value = data.localidade || '';
+            document.getElementById(`${prefix}state`).value = data.uf || '';
+        } catch (error) {
+            alert('Erro ao buscar o endereço: ' + error.message);
+        }
     },
 };
 

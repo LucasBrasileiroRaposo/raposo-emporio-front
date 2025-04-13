@@ -135,40 +135,45 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input
+                type="text"
+                id="cep"
+                name="cep"
+                required placeholder="Insira seu CEP" />
+            </div>
+
             <div class="form-row reduced-">
                 <div class="form-group">
-                    <label for="country">País:</label>
+                    <label for="address">Rua:</label>
                     <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        required
-                        minlength="3"
-                        maxlength="50"
-                        placeholder="Insira o nome de seu país"
-                    />
+                    type="text"
+                    id="address"
+                    name="address"
+                    required minlength="3"
+                    maxlength="250"
+                    placeholder="Insira o nome da sua rua" />
                 </div>
                 <div class="form-group">
                     <label for="city">Cidade:</label>
                     <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        minlength="3"
-                        maxlength="50"
-                        placeholder="Insira o nome da sua cidade"
-                     />
+                    type="text"
+                    id="city"
+                    name="city"
+                    minlength="3"
+                    maxlength="50"
+                    placeholder="Insira o nome da sua cidade" />
                 </div>
-                <div class="form-group state" >
+                <div class="form-group state">
                     <label for="state">Estado:</label>
                     <input
-                        type="text"
-                        id="state"
-                        name="state"
-                        minlength="2"
-                        maxlength="2"
-                        placeholder="Insira a Sigla"
-                    />
+                    type="text"
+                    id="state"
+                    name="state"
+                    minlength="2"
+                    maxlength="50"
+                    placeholder="" />
                 </div>
             </div>
 
@@ -303,39 +308,44 @@
                 </div>
             </div>
 
-            <div class="form-row reduced-">
+            <div class="form-group">
+                <label for="update-cep">CEP:</label>
+                <input
+                type="text"
+                id="update-cep"
+                name="cep"
+                required placeholder="Insira seu CEP" />
+              </div>
+
+              <div class="form-row reduced-">
                 <div class="form-group">
-                    <label for="update-country">País:</label>
-                    <input
-                        type="text"
-                        id="update-country"
-                        name="country"
-                        minlength="3"
-                        maxlength="50"
-                        placeholder="Insira o nome de seu país"
-                    />
+                  <label for="update-address">Endereço:</label>
+                  <input
+                  type="text"
+                  id="update-address"
+                  name="address"
+                  required minlength="3"
+                  maxlength="250"
+                  placeholder="Insira seu endereço" />
                 </div>
                 <div class="form-group">
-                    <label for="update-city">Cidade:</label>
-                    <input
-                        type="text"
-                        id="update-city"
-                        name="city"
-                        minlength="3"
-                        maxlength="50"
-                        placeholder="Insira o nome da sua cidade"
-                     />
+                  <label for="update-city">Cidade:</label>
+                  <input
+                  type="text"
+                  id="update-city"
+                  name="city" minlength="3"
+                  maxlength="50"
+                  placeholder="Insira o nome da sua cidade" />
                 </div>
-                <div class="form-group state" >
-                    <label for="update-state">Estado:</label>
-                    <input
-                        type="text"
-                        id="update-state"
-                        name="state"
-                        minlength="2"
-                        maxlength="2"
-                        placeholder="Insira a Sigla"
-                    />
+                <div class="form-group state">
+                  <label for="update-state">Estado:</label>
+                  <input
+                  type="text"
+                  id="update-state"
+                  name="state"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="" />
                 </div>
             </div>
 
@@ -356,6 +366,6 @@
     </div>
     </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>

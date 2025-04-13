@@ -28,3 +28,17 @@ Utilizei de estratégias de view e form que aparecia e desapareciam na tela do u
 2. Execute o live server ou copie o path do arquivo ```index.html``` e cole em seu navegador
 
 3. Para o sistema realmente funcionar o Back-end precisa estar rodando localmente (futuramente, providenciarei hospedagem em nuvem de alguma forma)
+
+### 📦 Integração com a API ViaCEP
+
+Esta aplicação faz uso da [API pública do ViaCEP](https://viacep.com.br/) para facilitar o preenchimento automático de informações de endereço a partir do CEP informado pelo usuário.
+
+#### 🔍 Como funciona
+Ao digitar um CEP válido no formulário de cadastro ou atualização, a aplicação realiza uma requisição à API ViaCEP para buscar os dados correspondentes de:
+- Endereço (rua, avenida, etc.)
+- Cidade
+- Estado
+
+#### 📚 Documentação da API
+A documentação oficial da API pode ser consultada em:
+🔗 [https://viacep.com.br](https://viacep.com.br)
