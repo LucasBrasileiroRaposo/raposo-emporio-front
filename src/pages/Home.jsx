@@ -22,7 +22,6 @@ export default function Home() {
     useEffect(() => {
       setIsAuthenticated(!!localStorage.getItem('token'));
     }, []);
-    console.log('isAuthenticated', isAuthenticated);
     const links = [
       { href: '#about', label: 'Sobre nós' },
       { href: '#contact', label: 'Contato' },

@@ -11,14 +11,9 @@ export default function Login() {
   const [popout, setPopout] = useState(null);
   const navigate = useNavigate();
 
-  const isAuthenticated = !!localStorage.getItem('token');
-  if (isAuthenticated) {
-    return <Navigate to="/users" replace />;
-  }
-
   useEffect(() => {
     if (popout) {
-      const timer = setTimeout(() => setPopout(null), 5000);
+      const timer = setTimeout(() => setPopout(null), 3000);
       return () => clearTimeout(timer);
     }
   }, [popout]);
@@ -36,10 +31,10 @@ export default function Login() {
       const data = await res.json();
 
       if (res.ok) {
+        setPopout({ type: 'success', message: 'Login realizado com sucesso!' });
         localStorage.setItem('token', data.token);
         localStorage.setItem('user-id', data.id);
-        setPopout({ type: 'success', message: 'Login realizado com sucesso!' });
-        setTimeout(() => navigate('/users'), 1000);
+        setTimeout(() => navigate('/users'), 2000);
       } else {
         setPopout({ type: 'error', message: data.error });
       }
@@ -47,6 +42,11 @@ export default function Login() {
       setPopout({ type: 'error', message: 'Erro ao fazer login.' });
     }
   };
+
+  const isAuthenticated = !!localStorage.getItem('token');
+  if (isAuthenticated) {
+    return <Navigate to="/users" replace />;
+  }
 
   return (
     <>
