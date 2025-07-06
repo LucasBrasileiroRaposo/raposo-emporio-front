@@ -19,6 +19,7 @@ Agora é possível a partir do CEP introduzido pelo usuário, já pegar o endere
 - HTML
 - CSS
 - JavaScript
+- React
 
 ### Como foram utilizadas?
 Utilizei de estratégias de view e form que aparecia e desapareciam na tela do usuário (de forma interna). Contruindo telas para login, cadastro, update, e a tela principal da aplicação, após o login.
@@ -28,9 +29,17 @@ Utilizei de estratégias de view e form que aparecia e desapareciam na tela do u
    ```bash
    git clone https://github.com/LucasBrasileiroRaposo/raposo-emporio-front.git
 
-2. Execute o live server ou copie o path do arquivo ```index.html``` e cole em seu navegador
+2. Instale as dependencias necessárias rodando o comando:
+   ```bash
+   npm i
+   ```
 
 3. Para o sistema realmente funcionar o Back-end precisa estar rodando localmente (futuramente, providenciarei hospedagem em nuvem de alguma forma)
+
+4. Execute o servidor local para rodar a aplicação com o comando:
+   ```bash
+   npm run dev
+   ```
 
 ### 📦 Integração com a API ViaCEP
 
