@@ -1,0 +1,41 @@
+
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.not-found-title {
+    font-size: 8rem;
+    color: #5c3d1b;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.not-found-message {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.not-found-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #a08c7c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.not-found-link:hover {
+    background-color: #8b796d;
+}
